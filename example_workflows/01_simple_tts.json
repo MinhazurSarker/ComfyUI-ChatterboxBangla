@@ -1,0 +1,74 @@
+{
+  "_comment": "Simple TTS: Type text → Generate → Preview in ComfyUI",
+  "last_node_id": 3,
+  "last_link_id": 2,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "ChatterboxBanglaLoader",
+      "pos": [60, 120],
+      "size": {"0": 340, "1": 130},
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {"name": "MODEL", "type": "CHATTERBOX_BANGLA_MODEL", "links": [1], "slot_index": 0}
+      ],
+      "properties": {"Node name for S&R": "ChatterboxBanglaLoader"},
+      "widgets_values": ["BosonLab/chatterbox-bangla", "auto", ""]
+    },
+    {
+      "id": 2,
+      "type": "ChatterboxBanglaGenerate",
+      "pos": [460, 80],
+      "size": {"0": 420, "1": 340},
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {"name": "MODEL", "type": "CHATTERBOX_BANGLA_MODEL", "link": 1, "slot_index": 0}
+      ],
+      "outputs": [
+        {"name": "AUDIO", "type": "AUDIO", "links": [2], "slot_index": 0}
+      ],
+      "properties": {"Node name for S&R": "ChatterboxBanglaGenerate"},
+      "widgets_values": [
+        "আমি বাংলায় কথা বলতে পারি। এটি একটি পরীক্ষামূলক বাক্য। আশা করি আপনি এটি পছন্দ করবেন।",
+        "",
+        "Bangla",
+        0.5,
+        0.5,
+        0.8,
+        0
+      ]
+    },
+    {
+      "id": 3,
+      "type": "PreviewAudio",
+      "pos": [940, 120],
+      "size": {"0": 280, "1": 80},
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {"name": "audio", "type": "AUDIO", "link": 2, "slot_index": 0}
+      ],
+      "properties": {"Node name for S&R": "PreviewAudio"}
+    }
+  ],
+  "links": [
+    [1, 1, 0, 2, 0, "CHATTERBOX_BANGLA_MODEL"],
+    [2, 2, 0, 3, 0, "AUDIO"]
+  ],
+  "groups": [
+    {
+      "title": "01 — Simple Bengali TTS",
+      "bounding": [40, 50, 1220, 440],
+      "color": "#1a3a5c",
+      "font_size": 22
+    }
+  ],
+  "config": {},
+  "extra": {"ds": {"scale": 0.9, "offset": [0, 0]}},
+  "version": 0.4
+}

@@ -1,0 +1,35 @@
+# ComfyUI-ChatterboxBangla — requirements
+# =========================================
+# Install into ComfyUI's venv:
+#   source /path/to/ComfyUI/.venv/bin/activate
+#   pip install -r requirements.txt
+#
+# NOTE: We do NOT install chatterbox-tts from pip because it requires
+# transformers==5.2.0, which conflicts with qwen-tts (transformers==4.57.3).
+# Instead, we git-clone the chatterbox-finetuning repo at runtime and
+# import directly from it. The node handles this automatically.
+#
+# Prerequisites (already in ComfyUI venv, no action needed):
+#   torch, torchaudio, numpy, huggingface_hub
+# =========================================
+
+# Audio I/O
+soundfile>=0.12.1
+librosa>=0.10.0
+
+# Tensor serialisation (used by chatterbox internally)
+safetensors>=0.4.0
+
+# ResembleAI watermarking (required by ChatterboxTTS internals)
+resemble-perth
+
+
+# Loudness normalisation (optional but recommended)
+pyloudnorm>=0.1.1
+
+# MP3 export (optional — also needs: brew install ffmpeg)
+pydub>=0.25.1
+
+# Required because resemble-perth uses pkg_resources which was removed in setuptools >= 70
+setuptools<70
+
